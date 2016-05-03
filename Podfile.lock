@@ -1,0 +1,22 @@
+PODS:
+  - IJProgressView (0.1.0)
+  - ImageLoader (0.9.0)
+
+DEPENDENCIES:
+  - IJProgressView (from `https://github.com/Isuru-Nanayakkara/IJProgressView.git`)
+  - ImageLoader
+
+EXTERNAL SOURCES:
+  IJProgressView:
+    :git: https://github.com/Isuru-Nanayakkara/IJProgressView.git
+
+CHECKOUT OPTIONS:
+  IJProgressView:
+    :commit: e2f9cf0dc6241d641897a848ad3d577981ee6dba
+    :git: https://github.com/Isuru-Nanayakkara/IJProgressView.git
+
+SPEC CHECKSUMS:
+  IJProgressView: 8e77627ac2f2c560c039d609c9ec517621969a63
+  ImageLoader: bb709e5b2708158da405760f42c75e7e52b561b5
+
+COCOAPODS: 0.39.0
