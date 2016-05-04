@@ -148,7 +148,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
                 WineDict[Wine.Keys.Varietal] = wineGlass.varietal
                 WineDict[Wine.Keys.WineName] = wineGlass.wineName
                 WineDict[Wine.Keys.Winery] = wineGlass.winery
-                WineDict[Wine.Keys.WineryID] = wineGlass.wineryId
+                WineDict[Wine.Keys.SnoothRank] = wineGlass.snoothrank
                 WineDict[Wine.Keys.Image] = wineGlass.image
                 
                 let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController

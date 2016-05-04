@@ -66,13 +66,43 @@
                                             <action selector="addToWishlist:" destination="JEX-9P-axG" eventType="touchUpInside" id="4wP-ht-8kF"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Frz-VY-Cab" userLabel="wine Image View">
-                                        <rect key="frame" x="0.0" y="64" width="560" height="462"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yBm-3z-Mm7">
+                                        <rect key="frame" x="220" y="64" width="120" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Rox-jo-zi5"/>
+                                            <constraint firstAttribute="width" constant="120" id="YhN-45-bXg"/>
+                                        </constraints>
+                                        <state key="normal" title="Your rating: ">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85L-1U-fB2">
+                                        <rect key="frame" x="259" y="94" width="42" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="8EC-xU-9qv"/>
+                                            <constraint firstAttribute="width" constant="42" id="XEK-gu-w2K"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="b8N-I9-52S">
+                                        <rect key="frame" x="146" y="124" width="269" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="265" id="cTO-0P-TeV"/>
+                                            <constraint firstAttribute="height" constant="30" id="fgx-lu-3UE"/>
+                                        </constraints>
+                                        <color key="minimumTrackTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="maximumTrackTintColor" red="0.61176470589999998" green="0.1215686275" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="rate:" destination="JEX-9P-axG" eventType="valueChanged" id="CUf-BA-b0B"/>
+                                        </connections>
+                                    </slider>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Frz-VY-Cab" userLabel="wine Image View">
+                                        <rect key="frame" x="64" y="154" width="432" height="372"/>
                                     </imageView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="Frz-VY-Cab" firstAttribute="leading" secondItem="VgS-Ng-LL7" secondAttribute="leading" id="upv-nM-9W3"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -87,6 +117,9 @@
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
                         <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
+                        <outlet property="ratingButton" destination="yBm-3z-Mm7" id="oZj-DH-MDB"/>
+                        <outlet property="ratingLabel" destination="85L-1U-fB2" id="Ljf-Ed-Shn"/>
+                        <outlet property="ratingSlider" destination="b8N-I9-52S" id="j7D-cn-4wO"/>
                         <outlet property="wineImageView" destination="Frz-VY-Cab" id="iNB-2u-SE0"/>
                         <outlet property="wishButton" destination="nog-DG-MaH" id="qmb-BW-J3g"/>
                     </connections>

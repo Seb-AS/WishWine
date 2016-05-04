@@ -63,13 +63,16 @@ class WineDBClient {
                     for wine in winedata {
                         
                         var varietal = wine["varietal"] as? String ?? "n/a"
-                        let wineryId = wine["winery_id"] as! String
+                        var snoothrank = wine["snoothrank"] as? String ?? "n/a"
                         let wineName = wine["name"] as! String
                         var winery = wine["winery"] as? String ?? "n/a"
                         var imageURL = wine["image"] as? String ?? "http://clipartsign.com/upload/2016/02/22/wine-bottle-black-clipart-image-the-clipart.png"
                         
                         if varietal == "" {
                             varietal = "n/a"
+                        }
+                        if snoothrank == "" {
+                            snoothrank = "n/a"
                         }
                         if winery == "" {
                             winery = "n/a"
@@ -78,7 +81,7 @@ class WineDBClient {
                            imageURL = "http://clipartsign.com/upload/2016/02/22/wine-bottle-black-clipart-image-the-clipart.png"
                         }
                         
-                        wineList.append(WineGlass(varietal: varietal, wineryId: wineryId, wineName: wineName, winery: winery, imageURL: imageURL))
+                        wineList.append(WineGlass(varietal: varietal, snoothrank: snoothrank, wineName: wineName, winery: winery, imageURL: imageURL))
                     }
                     completionHandler(result: wineList, error: nil)
                     

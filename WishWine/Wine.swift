@@ -13,7 +13,7 @@ class Wine: NSManagedObject {
     
     struct Keys {
         static let Varietal = "varietal"
-        static let WineryID = "wineryId"
+        static let SnoothRank = "snoothrank"
         static let WineName = "wineName"
         static let Winery = "winery"
         static let Image = "image"
@@ -39,7 +39,7 @@ class Wine: NSManagedObject {
      */
     
     @NSManaged var varietal: String
-    @NSManaged var wineryId: String
+    @NSManaged var snoothrank: String
     @NSManaged var wineName: String
     @NSManaged var winery: String
     @NSManaged var image: String
@@ -57,7 +57,7 @@ class Wine: NSManagedObject {
         super.init(entity: entity!, insertIntoManagedObjectContext: context)
         
         varietal = dict[Keys.Varietal] as! String
-        wineryId = dict[Keys.WineryID] as! String
+        snoothrank = dict[Keys.SnoothRank] as! String
         wineName = dict[Keys.WineName] as! String
         winery = dict[Keys.Winery] as! String
         image = dict[Keys.Image] as! String

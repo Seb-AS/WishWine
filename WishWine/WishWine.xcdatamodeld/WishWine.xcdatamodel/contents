@@ -2,13 +2,12 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Automatic">
     <entity name="Wine" syncable="YES">
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="snoothrank" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="varietal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wineName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="winery" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="wineryId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Wine" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Wine" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>
