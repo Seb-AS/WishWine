@@ -10,6 +10,9 @@
 		83208067A0054474745CADEA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 671716495FCFA4F897FC37CA /* Pods.framework */; };
 		B71BF4991CD7C3BC009EA7D1 /* WishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71BF4981CD7C3BC009EA7D1 /* WishViewController.swift */; };
 		B71BF49B1CD7D4BE009EA7D1 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71BF49A1CD7D4BE009EA7D1 /* ViewControllerExtensions.swift */; };
+		B7A4003E1CDA42400094DF22 /* NSManagedObjectContext+RecursiveSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4003D1CDA42400094DF22 /* NSManagedObjectContext+RecursiveSave.swift */; };
+		B7A400401CDA68C70094DF22 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4003F1CDA68C70094DF22 /* CoreDataStack.swift */; };
+		B7A400421CDA72900094DF22 /* Wine2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A400411CDA72900094DF22 /* Wine2.swift */; };
 		B7BEA4871CD3AD99004FF85F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEA4861CD3AD99004FF85F /* AppDelegate.swift */; };
 		B7BEA48C1CD3AD99004FF85F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BEA48A1CD3AD99004FF85F /* Main.storyboard */; };
 		B7BEA48F1CD3AD99004FF85F /* WishWine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B7BEA48D1CD3AD99004FF85F /* WishWine.xcdatamodeld */; };
@@ -20,7 +23,6 @@
 		B7BEA4A21CD7C055004FF85F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEA4A11CD7C055004FF85F /* SearchViewController.swift */; };
 		B7BEA4A41CD7C06C004FF85F /* DetailViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEA4A31CD7C06C004FF85F /* DetailViewcontroller.swift */; };
 		B7BEA4A71CD7C088004FF85F /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEA4A61CD7C088004FF85F /* TabViewController.swift */; };
-		B7BEA4A91CD7C19C004FF85F /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEA4A81CD7C19C004FF85F /* CoreDataStackManager.swift */; };
 		B7BEA4AB1CD7C1B2004FF85F /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEA4AA1CD7C1B2004FF85F /* Wine.swift */; };
 		B7BEA4AD1CD7C1C1004FF85F /* WineGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEA4AC1CD7C1C1004FF85F /* WineGlass.swift */; };
 		B7BEA4AF1CD7C1D5004FF85F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEA4AE1CD7C1D5004FF85F /* Reachability.swift */; };
@@ -31,6 +33,9 @@
 		772E2E92B3D159989F0BBDB6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B71BF4981CD7C3BC009EA7D1 /* WishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishViewController.swift; sourceTree = "<group>"; };
 		B71BF49A1CD7D4BE009EA7D1 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
+		B7A4003D1CDA42400094DF22 /* NSManagedObjectContext+RecursiveSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+RecursiveSave.swift"; sourceTree = "<group>"; };
+		B7A4003F1CDA68C70094DF22 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		B7A400411CDA72900094DF22 /* Wine2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wine2.swift; sourceTree = "<group>"; };
 		B7BEA4831CD3AD99004FF85F /* WishWine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WishWine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7BEA4861CD3AD99004FF85F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7BEA48B1CD3AD99004FF85F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -43,7 +48,6 @@
 		B7BEA4A11CD7C055004FF85F /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B7BEA4A31CD7C06C004FF85F /* DetailViewcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewcontroller.swift; sourceTree = "<group>"; };
 		B7BEA4A61CD7C088004FF85F /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
-		B7BEA4A81CD7C19C004FF85F /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 		B7BEA4AA1CD7C1B2004FF85F /* Wine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
 		B7BEA4AC1CD7C1C1004FF85F /* WineGlass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineGlass.swift; sourceTree = "<group>"; };
 		B7BEA4AE1CD7C1D5004FF85F /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -90,13 +94,15 @@
 		B76359491CD91E8400585598 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				B7A4003F1CDA68C70094DF22 /* CoreDataStack.swift */,
+				B7A4003D1CDA42400094DF22 /* NSManagedObjectContext+RecursiveSave.swift */,
 				B7BEA49D1CD7BFE0004FF85F /* WineDBClient.swift */,
 				B7BEA49F1CD7BFF6004FF85F /* Constants.swift */,
 				B71BF49A1CD7D4BE009EA7D1 /* ViewControllerExtensions.swift */,
-				B7BEA4A81CD7C19C004FF85F /* CoreDataStackManager.swift */,
 				B7BEA4AA1CD7C1B2004FF85F /* Wine.swift */,
 				B7BEA4AC1CD7C1C1004FF85F /* WineGlass.swift */,
 				B7BEA4AE1CD7C1D5004FF85F /* Reachability.swift */,
+				B7A400411CDA72900094DF22 /* Wine2.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -276,15 +282,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7A400401CDA68C70094DF22 /* CoreDataStack.swift in Sources */,
 				B7BEA4A71CD7C088004FF85F /* TabViewController.swift in Sources */,
 				B7BEA4A21CD7C055004FF85F /* SearchViewController.swift in Sources */,
 				B7BEA4AF1CD7C1D5004FF85F /* Reachability.swift in Sources */,
 				B71BF49B1CD7D4BE009EA7D1 /* ViewControllerExtensions.swift in Sources */,
-				B7BEA4A91CD7C19C004FF85F /* CoreDataStackManager.swift in Sources */,
+				B7A4003E1CDA42400094DF22 /* NSManagedObjectContext+RecursiveSave.swift in Sources */,
 				B7BEA4A01CD7BFF6004FF85F /* Constants.swift in Sources */,
 				B7BEA4A41CD7C06C004FF85F /* DetailViewcontroller.swift in Sources */,
 				B7BEA48F1CD3AD99004FF85F /* WishWine.xcdatamodeld in Sources */,
 				B7BEA4AB1CD7C1B2004FF85F /* Wine.swift in Sources */,
+				B7A400421CDA72900094DF22 /* Wine2.swift in Sources */,
 				B7BEA49E1CD7BFE0004FF85F /* WineDBClient.swift in Sources */,
 				B7BEA4871CD3AD99004FF85F /* AppDelegate.swift in Sources */,
 				B71BF4991CD7C3BC009EA7D1 /* WishViewController.swift in Sources */,

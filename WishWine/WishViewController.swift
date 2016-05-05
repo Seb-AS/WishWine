@@ -12,20 +12,13 @@ import CoreData
 class WishViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchBarDelegate {
     
     // MARK: - Properties
-    let sharedContext = CoreDataStackManager.sharedInstance().managedObjectContext
+    let sharedContext = CoreDataStack.sharedInstance().managedObjectContext
+    
+    var _fetchedResultsController: NSFetchedResultsController? = nil
     
     // MARK: - View Setup
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        do {
-            try fetchedResultsController.performFetch()
-        }
-        catch {
-            print(error)  // fail gently from user's perspective
-        }
-        
-        fetchedResultsController.delegate = self
         
         showTip()
     }
@@ -38,6 +31,15 @@ class WishViewController: UITableViewController, NSFetchedResultsControllerDeleg
         clearsSelectionOnViewWillAppear = splitViewController!.collapsed
         super.viewWillAppear(animated)
         
+        _fetchedResultsController = nil
+        
+        do {
+            try fetchedResultsController.performFetch()
+        }
+        catch {
+            print(error)  // fail gently from user's perspective
+        }
+        
         tableView.reloadData()
     }
     
@@ -47,21 +49,35 @@ class WishViewController: UITableViewController, NSFetchedResultsControllerDeleg
     
     //MARK: Core Data
     
-    lazy var fetchedResultsController: NSFetchedResultsController = {
+    //MARK: Core Data
+    var fetchedResultsController: NSFetchedResultsController {
+        if _fetchedResultsController != nil {
+            return _fetchedResultsController!
+        }
         
-        let fetchRequest = NSFetchRequest(entityName: "Wine")
+        let fetchRequest = NSFetchRequest()
+        // Edit the entity name as appropriate.
+        let entity = NSEntityDescription.entityForName("Wine", inManagedObjectContext: self.sharedContext)
+        fetchRequest.entity = entity
         
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "wineName", ascending: true)]
+        // Set the batch size to a suitable number.
+        fetchRequest.fetchBatchSize = 50
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
-                                                                  managedObjectContext: self.sharedContext,
-                                                                  sectionNameKeyPath: nil,
-                                                                  cacheName: nil)
+        // Edit the sort key as appropriate.
+        let sortDescriptor = NSSortDescriptor(key: "wineName", ascending: true)
+        _ = [sortDescriptor]
         
-        return fetchedResultsController
+        fetchRequest.sortDescriptors = [sortDescriptor]
         
-    }()
-    
+        // Edit the section name key path and cache name if appropriate.
+        // nil for section name key path means "no sections".
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.sharedContext, sectionNameKeyPath: nil, cacheName: nil)
+        aFetchedResultsController.delegate = self
+        _fetchedResultsController = aFetchedResultsController
+        
+        return _fetchedResultsController!
+    }
+
     // MARK: - UITableView delegate methods:
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -99,10 +115,10 @@ class WishViewController: UITableViewController, NSFetchedResultsControllerDeleg
             let context = self.fetchedResultsController.managedObjectContext
             context.deleteObject(fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject)
             
-            CoreDataStackManager.sharedInstance().saveContext()
+            CoreDataStack.sharedInstance().saveData()
         }
     }
-    
+        
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tableView.beginUpdates()
     }

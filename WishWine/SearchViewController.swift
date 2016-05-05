@@ -17,7 +17,7 @@ class SearchViewController: UITableViewController, UISearchBarDelegate {
     var currentWineGlass: WineGlass?  // since searchBar is returning results in this form
     var wineGlassResults = [WineGlass]() // this, rather than a temporary managed object context, is the scratchpad here
     var searchTask: NSURLSessionDataTask?
-    let sharedContext = CoreDataStackManager.sharedInstance().managedObjectContext
+    let sharedContext = CoreDataStack.sharedInstance().managedObjectContext
     
     // MARK: - View Setup
     override func viewDidLoad() {

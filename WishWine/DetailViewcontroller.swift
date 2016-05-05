@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import ImageLoader
 import IJProgressView
 
@@ -20,7 +21,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var ratingButton: UIButton!
     @IBOutlet weak var ratingLabel: UILabel!
     
-    let sharedContext = CoreDataStackManager.sharedInstance().managedObjectContext
+    let sharedContext = CoreDataStack.sharedInstance().managedObjectContext
     var hideWishButton:Bool = false
     var newRating: Int?
     
@@ -45,8 +46,11 @@ class DetailViewController: UIViewController {
                 }
                 title = detailObject.valueForKey("varietal")?.description
                 ratingLabel.text = detailObject.valueForKey("snoothrank")!.description == "n/a" ? "none " :  detailObject.valueForKey("snoothrank")!.description
-                let rated: Int = detailObject.valueForKey("snoothrank")!.description == "n/a" ? 50 : Int(detailObject.valueForKey("snoothrank")!.description)!
-                ratingSlider.setValue(Float(rated), animated: true)
+                
+                if !hideWishButton {
+                    let rated: Int = detailObject.valueForKey("snoothrank")!.description == "n/a" ? 50 : Int(detailObject.valueForKey("snoothrank")!.description)!
+                    ratingSlider.setValue(Float(rated), animated: true)
+                }
                 
                 wishButton.hidden = hideWishButton
                 ratingSlider.hidden = hideWishButton
@@ -87,19 +91,8 @@ class DetailViewController: UIViewController {
         } else {
             // Build a beer and use the NSManagedObject init method to persist it to the Core Store           
             
-            var WineDict = [String: AnyObject]()
-            
-            WineDict[Wine.Keys.Varietal] = detailObject.valueForKey("varietal")!.description
-            WineDict[Wine.Keys.WineName] = detailObject.valueForKey("wineName")!.description
-            WineDict[Wine.Keys.Winery] = detailObject.valueForKey("winery")!.description
-            WineDict[Wine.Keys.SnoothRank] = ratingLabel.text
-            WineDict[Wine.Keys.Image] = detailObject.valueForKey("image")!.description
-            
-            let _ = Wine(dict: WineDict , context: sharedContext)
-            
+           saveInBackground()            
         }
-        
-       CoreDataStackManager.sharedInstance().saveContext()
         
         // Reset the instance vars
         //title = ""
@@ -107,18 +100,42 @@ class DetailViewController: UIViewController {
         //detailObject = nil
         //wineImageView = nil
         wishButton.hidden = true
+    }
+
+    /*
+    ///https://pawanpoudel.svbtle.com/fixing-core-data-concurrency-violations
+    */
+    
+    func saveInBackground() {
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            self.saveWishList()
+        }
+    }
+    
+    func saveWishList() {
+        let coreDataStack = CoreDataStack()
         
-       let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.switchBackFirst();
+        if let newPrivateQueueContext =
+            coreDataStack.newPrivateQueueContext()
+        {
+            let newWine: Wine2 = NSEntityDescription.insertNewObjectForEntityForName("Wine", inManagedObjectContext: newPrivateQueueContext) as! Wine2
+            newWine.varietal = detailObject.valueForKey("varietal")!.description
+            newWine.wineName = detailObject.valueForKey("wineName")!.description
+            newWine.winery = detailObject.valueForKey("winery")!.description
+            newWine.snoothrank = ratingLabel.text!
+            newWine.image = detailObject.valueForKey("image")!.description
+            
+            newPrivateQueueContext.performBlock {
+                newPrivateQueueContext.saveRecursively()
+            }
+        }
+    }
+    
+    func goToNextView() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.switchBackFirst()
         appDelegate.switchBack()
     }
     
-    // MARK: - Segues
-    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "addToWishList" {
-            let controller = (segue.destinationViewController as! UINavigationController).topViewController as! WishViewController
-            controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-            controller.navigationItem.leftItemsSupplementBackButton = false
-        }
-    }*/
 }
